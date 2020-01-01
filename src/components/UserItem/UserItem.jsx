@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { dateFormating } from '../../helpers';
 
 const UserItem = ({ firstName, lastName, dob}) => (
   <React.Fragment>
     <ul>
       <li>First name: {firstName}</li>
       <li>Last name: {lastName}</li>
-      <li>Birthday: {dob}</li>
+      <li>Birthday: { dateFormating(dob) }</li>
     </ul>
   </React.Fragment>
 );
