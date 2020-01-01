@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getUsers } from '../../services/http-services';
+import { monthsList } from '../../helpers';
 import UsersList from '../UsersList';
+import MonthsList from '../MonthsList';
 
 const App = () => {
-  const [usersList, setUsersList] = useState(null);
+  const [ usersList, setUsersList ] = useState(null);
+  const [ months ] = useState(monthsList());
 
   useEffect(() => {
     getUsers()
@@ -15,6 +18,7 @@ const App = () => {
 
   return (
     <div className="app">
+      <MonthsList monthsList={months} />
       <UsersList usersList={usersList} />
     </div>
   );
