@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getUsers } from '../../services/http-services';
+import UsersList from '../UsersList';
 
 const App = () => {
   const [usersList, setUsersList] = useState(null);
@@ -14,7 +15,7 @@ const App = () => {
 
   return (
     <div className="app">
-
+      <UsersList usersList={usersList} />
     </div>
   );
 };
