@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ErrorMessage } from './ErrorBoundaryStyles';
 
 export default class ErrorBoundary extends Component {
   state = {
@@ -10,6 +11,6 @@ export default class ErrorBoundary extends Component {
   }
 
   render() {
-    return this.state.hasError ? <h1>Error</h1> : this.props.children;
+    return this.state.hasError ? <ErrorMessage>Error</ErrorMessage> : this.props.children;
   }
 }

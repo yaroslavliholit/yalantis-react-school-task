@@ -3,6 +3,8 @@ import { getUsers } from '../../services/http-services';
 import UsersList from '../UsersList';
 import MonthsList from '../MonthsList';
 import Loader from '../Loader';
+import ErrorBoundary from '../ErrorBoundary';
+import Footer from '../Footer';
 import { monthsStatistic, monthsListColor, monthsFormat } from '../../helpers';
 import { AppWrapper } from './AppStyles';
 
@@ -36,12 +38,15 @@ const App = () => {
 
   return (
     <div className="app">
-      <AppWrapper>
-        <MonthsList
-          onMonthsHover={filterUsersHandler}
-          months={months} />
-        <UsersList usersList={usersList} />
-      </AppWrapper>
+      <ErrorBoundary>
+        <AppWrapper>
+          <MonthsList
+            onMonthsHover={filterUsersHandler}
+            months={months} />
+          <UsersList usersList={usersList} />
+          <Footer />
+        </AppWrapper>
+      </ErrorBoundary>
     </div>
   );
 };
