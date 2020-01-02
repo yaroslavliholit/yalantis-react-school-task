@@ -20,13 +20,9 @@ export const MonthslistItem = styled.li`
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  border: 1px solid #e2e2e2;
+  border: 1px solid ${({ activeMonths, month, color}) => activeMonths === month ? color : '#e2e2e2' };
   border-radius: 3px;
   color: ${({color}) => color};
   cursor: pointer;
   transition: .5s border;
-
-  &:hover {
-    border: 1px solid ${({color}) => color};
-  }
 `;

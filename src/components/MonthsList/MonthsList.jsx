@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MonthslistWrapper, MonthslistItem } from './MonthsListStyles';
 
-const MonthsList = ({ months, onMonthsHover }) => (
+const MonthsList = ({ months, activeMonths, onMonthsHover }) => (
   <MonthslistWrapper>
     {months.map(({ month, color }) => (
       <MonthslistItem
+        activeMonths={activeMonths}
+        month={month}
         color={color}
         key={month}
         onMouseOver={() => onMonthsHover(month)} >
@@ -18,6 +20,7 @@ const MonthsList = ({ months, onMonthsHover }) => (
 MonthsList.propTypes = {
   mounths: PropTypes.array,
   onMonthsHover: PropTypes.func,
+  activeMonths: PropTypes.bool,
 };
 
 export default MonthsList;

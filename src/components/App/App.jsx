@@ -35,7 +35,8 @@ const App = () => {
           <AppTitle>Yalantis React.js School App</AppTitle>
           <MonthsList
             onMonthsHover={filterUsersHandler}
-            months={months} />
+            months={months}
+            activeMonths={activeMonths} />
             {
               activeMonths
               ? <UsersList usersList={usersList} />
