@@ -13,3 +13,9 @@ export const AppTitle = styled.h1`
   font-weight: 700;
   text-align: center;
 `;
+
+export const HelpMessage = styled.p`
+  font-family: 'Open Sans', sans-serif;
+  font-size: 25px;
+  text-align: center;
+`;
