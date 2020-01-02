@@ -4,6 +4,7 @@ import UsersList from '../UsersList';
 import MonthsList from '../MonthsList';
 import Loader from '../Loader';
 import { monthsStatistic, monthsListColor, monthsFormat } from '../../helpers';
+import { AppWrapper } from './AppStyles';
 
 const App = () => {
   const [ usersOriginal, setUsersOriginal ] = useState(null);
@@ -35,10 +36,12 @@ const App = () => {
 
   return (
     <div className="app">
-      <MonthsList
-        onMonthsHover={filterUsersHandler}
-        months={months} />
-      <UsersList usersList={usersList} />
+      <AppWrapper>
+        <MonthsList
+          onMonthsHover={filterUsersHandler}
+          months={months} />
+        <UsersList usersList={usersList} />
+      </AppWrapper>
     </div>
   );
 };

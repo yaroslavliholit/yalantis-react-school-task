@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { dateFormating } from '../../helpers';
+import { UserItemWrapper, UserDetailsWrapper, UserDetailsItem } from './UserItemStyles';
 
 const UserItem = ({ firstName, lastName, dob}) => (
-  <React.Fragment>
-    <ul>
-      <li>First name: {firstName}</li>
-      <li>Last name: {lastName}</li>
-      <li>Birthday: { dateFormating(dob) }</li>
-    </ul>
-  </React.Fragment>
+  <UserItemWrapper>
+    <UserDetailsWrapper>
+      <UserDetailsItem>First name: {firstName}</UserDetailsItem>
+      <UserDetailsItem>Last name: {lastName}</UserDetailsItem>
+      <UserDetailsItem>Birthday: { dateFormating(dob) }</UserDetailsItem>
+    </UserDetailsWrapper>
+  </UserItemWrapper>
 );
 
 UserItem.propTypes = {
