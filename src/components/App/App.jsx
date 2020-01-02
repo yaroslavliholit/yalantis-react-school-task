@@ -1,38 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { getUsers } from '../../services/http-services';
 import UsersList from '../UsersList';
 import MonthsList from '../MonthsList';
 import Loader from '../Loader';
 import ErrorBoundary from '../ErrorBoundary';
 import Footer from '../Footer';
-import { monthsStatistic, monthsListColor, monthsFormat } from '../../helpers';
-import { AppWrapper, AppTitle } from './AppStyles';
+import { AppWrapper, AppTitle, HelpMessage } from './AppStyles';
+import { initialState, reducer } from '../../store/reducer';
+import { loadUsersSuccess, loadUsersError, loadMonths, filterUsers } from '../../store/actions';
 
 const App = () => {
-  const [ usersOriginal, setUsersOriginal ] = useState(null);
-  const [ usersList, setUsersList ] = useState(null);
-  const [ months, setMonths ] = useState(null);
-  const [ loading, setLoading ] = useState(true);
+  const [ { usersList, months, activeMonths, loading }, dispatch ] = useReducer(reducer, initialState);
+
+  const filterUsersHandler = (value) => dispatch(filterUsers(value));
 
   useEffect(() => {
     getUsers()
       .then(({data}) => {
-        setMonths(monthsListColor(monthsStatistic(data)));
-        setUsersOriginal(data);
-        setUsersList(data);
+        dispatch(loadUsersSuccess(data));
+        dispatch(loadMonths( data ));
       })
       .catch((error) => {
+        dispatch(loadUsersError());
         throw new Error(`${error}`);
       })
-      .finally(() => setLoading(false));
-  }, [setUsersList]);
-
-  const filterUsersHandler = (value) => {
-    const filterUserList = usersList.filter((item) => monthsFormat(item.dob) === value);
-    if (value) return setUsersList(filterUserList);
-
-    return setUsersList(usersOriginal);
-  };
+  }, []);
 
   if (loading) return <Loader />;
 
@@ -40,11 +32,15 @@ const App = () => {
     <div className="app">
       <ErrorBoundary>
         <AppWrapper>
-          <AppTitle>Yalantis React.js School Application</AppTitle>
+          <AppTitle>Yalantis React.js School App</AppTitle>
           <MonthsList
             onMonthsHover={filterUsersHandler}
             months={months} />
-          <UsersList usersList={usersList} />
+            {
+              activeMonths
+              ? <UsersList usersList={usersList} />
+              : <HelpMessage>Hover on months to see the users</HelpMessage>
+            }
           <Footer />
         </AppWrapper>
       </ErrorBoundary>
