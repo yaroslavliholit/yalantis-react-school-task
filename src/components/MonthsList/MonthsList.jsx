@@ -8,8 +8,7 @@ const MonthsList = ({ months, onMonthsHover }) => (
       <MonthslistItem
         color={color}
         key={month}
-        onMouseOver={() => onMonthsHover(month)}
-        onMouseOut={() => onMonthsHover(false)} >
+        onMouseOver={() => onMonthsHover(month)} >
         { month }
       </MonthslistItem>
     ))}
