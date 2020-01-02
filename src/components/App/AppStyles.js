@@ -6,3 +6,10 @@ export const AppWrapper = styled.div`
   margin: 0 auto;
   padding: 0 15px;
 `;
+
+export const AppTitle = styled.h1`
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+`;

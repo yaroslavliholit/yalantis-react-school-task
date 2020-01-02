@@ -6,7 +6,7 @@ import Loader from '../Loader';
 import ErrorBoundary from '../ErrorBoundary';
 import Footer from '../Footer';
 import { monthsStatistic, monthsListColor, monthsFormat } from '../../helpers';
-import { AppWrapper } from './AppStyles';
+import { AppWrapper, AppTitle } from './AppStyles';
 
 const App = () => {
   const [ usersOriginal, setUsersOriginal ] = useState(null);
@@ -40,6 +40,7 @@ const App = () => {
     <div className="app">
       <ErrorBoundary>
         <AppWrapper>
+          <AppTitle>Yalantis React.js School Application</AppTitle>
           <MonthsList
             onMonthsHover={filterUsersHandler}
             months={months} />
