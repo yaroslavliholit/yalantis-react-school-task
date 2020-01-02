@@ -36,4 +36,10 @@ export const MonthslistItem = styled.li`
   &:hover:after {
     opacity: 1;
   }
+
+  @media (max-width: 1055px) {
+    &:after {
+      display: none;
+    }
+  }
 `;
