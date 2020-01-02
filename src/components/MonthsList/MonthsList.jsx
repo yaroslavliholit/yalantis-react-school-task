@@ -1,18 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MonthsList = ({monthsList}) => {
+const MonthsList = ({ months, onMonthsHover }) => {
   return (
     <section className="months-list">
       <ul>
-        {monthsList.map((month) => <li key={month}>{month}</li>)}
+        {months.map(({ month, color }) => (
+          <li
+            key={month}
+            style={{color}}
+            onMouseOver={() => onMonthsHover(month)}
+            onMouseOut={() => onMonthsHover(false)} >
+            {month}
+          </li>
+        ))}
       </ul>
     </section>
   )
 };
 
 MonthsList.propTypes = {
-  monthsList: PropTypes.array.isRequired,
+  mounths: PropTypes.array,
 };
 
 export default MonthsList;
