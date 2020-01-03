@@ -16,9 +16,9 @@ const App = () => {
 
   useEffect(() => {
     getUsers()
-      .then(({data}) => {
+      .then(({ data }) => {
         dispatch(loadUsersSuccess(data));
-        dispatch(loadMonths( data ));
+        dispatch(loadMonths(data));
       })
       .catch((error) => {
         dispatch(loadUsersError());
