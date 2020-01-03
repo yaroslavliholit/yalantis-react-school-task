@@ -1,5 +1,7 @@
 # Test task for Yalantis React.js School
 
+[Project link](http://user-statistics.surge.sh/)
+
 ## Tech Stack
 * React
 * axios
