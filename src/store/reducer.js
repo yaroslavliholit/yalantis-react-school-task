@@ -1,4 +1,4 @@
-import { monthsStatistic, monthsListColor, monthsFormat } from '../helpers';
+import { monthsStatistic, monthsListColor, monthsFormating } from '../helpers';
 
 import {
   LOAD_USER_SUCCESS,
@@ -42,7 +42,7 @@ export const reducer = (state, action) => {
 
       if (action.payload) {
         active = action.payload;
-        filterUserList = state.usersOriginal.filter(({ dob }) => monthsFormat(dob) === action.payload);
+        filterUserList = state.usersOriginal.filter(({ dob }) => monthsFormating(dob) === action.payload);
       } else {
         filterUserList = state.usersOriginal;
       }

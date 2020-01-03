@@ -2,21 +2,21 @@ import moment from 'moment';
 
 export const dateFormating = (date) => moment(date).format('MMMM Do YYYY');
 
-export const monthsFormat = (month) => moment(month).format('MMMM');
+export const monthsFormating = (month) => moment(month).format('MMMM');
 
 export const monthsList = () => moment.months();
 
 export const monthsStatistic = (monthsList) => {
   const result = [];
   monthsList.forEach(({dob}) => {
-    const inArray = result.find(({ month }) => month === monthsFormat(dob) );
+    const inArray = result.find(({ month }) => month === monthsFormating(dob) );
 
     if (inArray) {
       inArray.count += 1;
       return false;
     }
 
-    result.push({ month: monthsFormat(dob), count: 1 });
+    result.push({ month: monthsFormating(dob), count: 1 });
   });
 
   return result;
