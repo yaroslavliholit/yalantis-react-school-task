@@ -20,7 +20,10 @@ const MonthsList = ({ months, activeMonths, onMonthsHover }) => (
 MonthsList.propTypes = {
   mounths: PropTypes.array,
   onMonthsHover: PropTypes.func,
-  activeMonths: PropTypes.bool,
+  activeMonths: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ]),
 };
 
 export default MonthsList;
