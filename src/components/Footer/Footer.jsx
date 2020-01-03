@@ -3,7 +3,10 @@ import { FooterWrapper } from './FooterStyles';
 
 const Footer = () => (
   <FooterWrapper>
-    <a href="/">
+    <a
+      href="https://github.com/yaroslavliholit/yalantis-react-school-task"
+      rel="noopener noreferrer"
+      target="_blank" >
       <img
         src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" alt="github"
         title="github repository"
