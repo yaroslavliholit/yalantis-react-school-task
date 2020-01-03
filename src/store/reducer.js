@@ -13,6 +13,7 @@ export const initialState = {
   months: [],
   activeMonths: false,
   loading: true,
+  errorLoading: false,
 };
 
 export const reducer = (state, action) => {
@@ -30,6 +31,7 @@ export const reducer = (state, action) => {
         usersList: [],
         usersOriginal: [],
         loading: false,
+        errorLoading: true,
       };
     case LOAD_MONTHS :
       return {

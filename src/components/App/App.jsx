@@ -5,12 +5,13 @@ import MonthsList from '../MonthsList';
 import Loader from '../Loader';
 import ErrorBoundary from '../ErrorBoundary';
 import Footer from '../Footer';
+import ErrorIndicator from '../ErrorIndicator';
 import { AppWrapper, AppTitle, HelpMessage } from './AppStyles';
 import { initialState, reducer } from '../../store/reducer';
 import { loadUsersSuccess, loadUsersError, loadMonths, filterUsers } from '../../store/actions';
 
 const App = () => {
-  const [ { usersList, months, activeMonths, loading }, dispatch ] = useReducer(reducer, initialState);
+  const [ { usersList, months, activeMonths, loading, errorLoading }, dispatch ] = useReducer(reducer, initialState);
 
   const filterUsersHandler = (value) => dispatch(filterUsers(value));
 
@@ -20,32 +21,29 @@ const App = () => {
         dispatch(loadUsersSuccess(data));
         dispatch(loadMonths(data));
       })
-      .catch((error) => {
-        dispatch(loadUsersError());
-        throw new Error(`${error}`);
-      })
+      .catch(() => dispatch(loadUsersError()))
   }, []);
 
   if (loading) return <Loader />;
 
+  if (errorLoading) return <ErrorIndicator />;
+
   return (
-    <div className="app">
-      <ErrorBoundary>
-        <AppWrapper>
-          <AppTitle>Yalantis React.js School App</AppTitle>
-          <MonthsList
-            onMonthsHover={filterUsersHandler}
-            months={months}
-            activeMonths={activeMonths} />
-            {
-              activeMonths
-              ? <UsersList usersList={usersList} />
-              : <HelpMessage>Hover on months to see the users</HelpMessage>
-            }
-          <Footer />
-        </AppWrapper>
-      </ErrorBoundary>
-    </div>
+    <ErrorBoundary>
+      <AppWrapper>
+        <AppTitle>Yalantis React.js School App</AppTitle>
+        <MonthsList
+          onMonthsHover={filterUsersHandler}
+          months={months}
+          activeMonths={activeMonths} />
+          {
+            activeMonths
+            ? <UsersList usersList={usersList} />
+            : <HelpMessage>Hover on months to see the users</HelpMessage>
+          }
+        <Footer />
+      </AppWrapper>
+    </ErrorBoundary>
   );
 };
 

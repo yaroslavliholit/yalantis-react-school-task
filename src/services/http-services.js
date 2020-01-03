@@ -6,7 +6,8 @@ export const getUsers = async () => {
   try {
     const responce = await axios.get(API_URL);
     return responce;
-  } catch (error) {
+  } catch(error) {
     console.error(error);
+    throw new Error(`${error}`);
   }
 };
