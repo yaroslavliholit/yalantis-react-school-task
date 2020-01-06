@@ -2,6 +2,13 @@
 
 [Project link](http://user-statistics.surge.sh/)
 
+## Instructions for installing and starting a project
+
+```
+npm install
+npm run start
+```
+
 ## Tech Stack
 * React
 * axios
